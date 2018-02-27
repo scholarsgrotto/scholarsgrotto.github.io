@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<title>Popular Systems and Toolkits for Digital Humanities Projects</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+	
+	<div>
+	<p>Below is a list of digital humanities tools, ranked roughly according to difficulty, that DH practitioners might expect to see in 2018. It accompanies a chapter titled "Digital Exhibits to Digital Humanities: Expanding the Digital Libraries Portfolio" in <i>The Top Technologies Every Librarian Needs to Know: A LITA Guide</i> (2018 ed). The source .tsv file is available on Github here: <a href="https://github.com/scholarsgrotto/dh-docs/blob/master/lita-tools.tsv">https://github.com/scholarsgrotto/dh-docs/blob/master/lita-tools.tsv</a>.
+	</p> 
+	
+	<p>Since this list accompanies a published article, it is designed to "go out of date" as a historical record of the state of things at time of writing. Therefore, updates will be minimal. 
+	
+	</p> 
+	
+	
+	
+	</div>
+	
+        <script src="//d3js.org/d3.v3.min.js"></script> 
+        <!-- <script src="d3.min.js?v=3.2.8"></script> -->
+
+        <script type="text/javascript"charset="utf-8">
+			var url="//raw.githubusercontent.com/scholarsgrotto/dh-docs/master/lita-tools.tsv";
+            d3.text(url, function(data) {
+                var parsedTSV = d3.tsv.parseRows(data);
+
+                var container = d3.select("body")
+                    .append("table")
+
+                    .selectAll("tr")
+                        .data(parsedTSV).enter()
+                        .append("tr")
+
+                    .selectAll("td")
+                        .data(function(d) { return d; }).enter()
+                        .append("td")
+                        .text(function(d) { return d; });
+            });
+        </script>
+    </body>
+</html>
